@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "beszel",
+  "name": "beszel-extension",
   "title": "Beszel",
   "description": "Monitor and configure your systems managed by Beszel.",
   "icon": "icon.png",
