@@ -41,7 +41,7 @@ export default function Command() {
     showToast({
       style: Toast.Style.Failure,
       title: "Something went wrong",
-      message: error,
+      message: error.message,
       primaryAction: {
         title: "Open Extension Preferences",
         onAction: () => {
@@ -79,7 +79,7 @@ export default function Command() {
   }, [systems]);
 
   return (
-    <List isLoading={isLoading} isShowingDetail>
+    <List isLoading={isLoading && !error} isShowingDetail>
       {Object.entries(grouped).map(([status, filtered]) => (
         <List.Section
           key={status}
