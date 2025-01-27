@@ -2,6 +2,7 @@ import { useCachedPromise } from "@raycast/utils";
 import { useEffect } from "react";
 import type Pocketbase from "pocketbase";
 import type { BeszelSystem } from "../types/beszel";
+import { openExtensionPreferences } from "@raycast/api";
 
 function sortSystems(systems: BeszelSystem[]) {
   return systems.sort((a, b) => a.name.localeCompare(b.name));
@@ -11,7 +12,6 @@ export function useSystems(client: Pocketbase | undefined) {
   const {
     data: systems,
     isLoading,
-    error,
     mutate,
   } = useCachedPromise(
     async () => {
@@ -23,6 +23,16 @@ export function useSystems(client: Pocketbase | undefined) {
     {
       execute: client !== undefined,
       keepPreviousData: true,
+      failureToastOptions: {
+        title: "Configuration Error",
+        message: "Please check your configuration and try again.",
+        primaryAction: {
+          title: "Open Extension Preferences",
+          onAction: () => {
+            openExtensionPreferences();
+          },
+        },
+      },
     },
   );
 
@@ -68,5 +78,5 @@ export function useSystems(client: Pocketbase | undefined) {
     };
   }, [client, mutate]);
 
-  return { systems, isLoading, error };
+  return { systems, isLoading };
 }
