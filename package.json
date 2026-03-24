@@ -265,7 +265,7 @@
     "@raycast/utils": "^1.19.1",
     "eventsource": "^3.0.5",
     "pocketbase": "^0.25.2",
-    "undici": "^7.18.2"
+    "undici": "^7.24.0"
   },
   "devDependencies": {
     "@raycast/eslint-config": "^1.0.11",
